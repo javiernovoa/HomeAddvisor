@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c1a9b30c06a44811a080f6e019e066f4" Name="Diagram1">
+        <EntityTypeShape EntityType="HOMEADDVISOR_DBModel.Administrador" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOMEADDVISOR_DBModel.Areas" Width="1.5" PointX="1.5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOMEADDVISOR_DBModel.Cliente" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOMEADDVISOR_DBModel.Comuna" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOMEADDVISOR_DBModel.Deuda" Width="1.5" PointX="10.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOMEADDVISOR_DBModel.Profesional" Width="1.5" PointX="6" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOMEADDVISOR_DBModel.Region" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOMEADDVISOR_DBModel.Servicio" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOMEADDVISOR_DBModel.Tipo_Profesional" Width="1.5" PointX="3.75" PointY="9.25" IsExpanded="true" />
+        <AssociationConnector Association="HOMEADDVISOR_DBModel.FK_Tipo_Profesional_Areas" ManuallyRouted="false" />
+        <AssociationConnector Association="HOMEADDVISOR_DBModel.FK_Cliente_Comuna" ManuallyRouted="false" />
+        <AssociationConnector Association="HOMEADDVISOR_DBModel.FK_Cliente_Region" ManuallyRouted="false" />
+        <AssociationConnector Association="HOMEADDVISOR_DBModel.FK_Servicio_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="HOMEADDVISOR_DBModel.FK_Profesional_Comuna" ManuallyRouted="false" />
+        <AssociationConnector Association="HOMEADDVISOR_DBModel.FK_Servicio_Comuna" ManuallyRouted="false" />
+        <AssociationConnector Association="HOMEADDVISOR_DBModel.FK_Deuda_Servicio" ManuallyRouted="false" />
+        <AssociationConnector Association="HOMEADDVISOR_DBModel.FK_Servicio_Deuda" ManuallyRouted="false" />
+        <AssociationConnector Association="HOMEADDVISOR_DBModel.FK_Profesional_Region" ManuallyRouted="false" />
+        <AssociationConnector Association="HOMEADDVISOR_DBModel.FK_Profesional_Tipo_Profesional" ManuallyRouted="false" />
+        <AssociationConnector Association="HOMEADDVISOR_DBModel.FK_Servicio_Profesional" ManuallyRouted="false" />
+        <AssociationConnector Association="HOMEADDVISOR_DBModel.FK_Servicio_Region" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

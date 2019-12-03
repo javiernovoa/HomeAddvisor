@@ -1,0 +1,50 @@
+﻿@model HomeAddvisor.DB.Comuna
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Comuna</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre_Comuna)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_Comuna)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoPostal_Comuna)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoPostal_Comuna)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sector)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sector)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gse)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Comuna }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

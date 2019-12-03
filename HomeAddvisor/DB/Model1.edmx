@@ -1,0 +1,805 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HOMEADDVISOR_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Administrador">
+          <Key>
+            <PropertyRef Name="Id_Administrador" />
+          </Key>
+          <Property Name="Id_Administrador" Type="int" Nullable="false" />
+          <Property Name="Rut_Adminsitrador" Type="varchar" MaxLength="12" />
+          <Property Name="Password" Type="nchar" MaxLength="35" />
+        </EntityType>
+        <EntityType Name="Areas">
+          <Key>
+            <PropertyRef Name="Id_Area" />
+          </Key>
+          <Property Name="Id_Area" Type="int" Nullable="false" />
+          <Property Name="Nombre_Area" Type="varchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Id_Cliente" />
+          </Key>
+          <Property Name="Id_Cliente" Type="int" Nullable="false" />
+          <Property Name="Rut_Cliente" Type="varchar" MaxLength="12" />
+          <Property Name="Nombre_Cliente" Type="varchar" MaxLength="50" />
+          <Property Name="ApellidoPa_Cliente" Type="varchar" MaxLength="50" />
+          <Property Name="ApellidoMa_Cliente" Type="varchar" MaxLength="50" />
+          <Property Name="Domicilio_Cliente" Type="varchar" MaxLength="10" />
+          <Property Name="Bloqueado" Type="bit" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Telefono" Type="varchar" MaxLength="50" />
+          <Property Name="Id_Comuna" Type="int" />
+          <Property Name="Id_Region" Type="int" />
+        </EntityType>
+        <EntityType Name="Comuna">
+          <Key>
+            <PropertyRef Name="Id_Comuna" />
+          </Key>
+          <Property Name="Id_Comuna" Type="int" Nullable="false" />
+          <Property Name="Nombre_Comuna" Type="nchar" MaxLength="10" />
+          <Property Name="CodigoPostal_Comuna" Type="nchar" MaxLength="10" />
+          <Property Name="Sector" Type="nchar" MaxLength="10" />
+          <Property Name="Gse" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Deuda">
+          <Key>
+            <PropertyRef Name="Id_Deuda" />
+          </Key>
+          <Property Name="Id_Deuda" Type="int" Nullable="false" />
+          <Property Name="Id_Servicio" Type="int" />
+          <Property Name="Monto_Deuda" Type="nchar" MaxLength="10" />
+          <Property Name="Porcentaje_Deuda" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Profesional">
+          <Key>
+            <PropertyRef Name="Id_Profesional" />
+          </Key>
+          <Property Name="Id_Profesional" Type="int" Nullable="false" />
+          <Property Name="Rut_Profesional" Type="varchar" MaxLength="12" />
+          <Property Name="Nombre_Profesional" Type="varchar" MaxLength="50" />
+          <Property Name="ApellidoPa_Profesional" Type="varchar" MaxLength="50" />
+          <Property Name="ApellidoMa_Profesional" Type="varchar" MaxLength="50" />
+          <Property Name="Domicilio_Profesional" Type="varchar" MaxLength="50" />
+          <Property Name="Bloqueado" Type="bit" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Telefono" Type="varchar" MaxLength="50" />
+          <Property Name="Capacitacion" Type="bit" />
+          <Property Name="Imagen" Type="image" />
+          <Property Name="Disponibilidad" Type="varchar" MaxLength="50" />
+          <Property Name="Jornada" Type="varchar" MaxLength="50" />
+          <Property Name="Codigo_Profesional" Type="int" />
+          <Property Name="Id_RegionP" Type="int" />
+          <Property Name="Id_ComunaP" Type="int" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Id_Region" />
+          </Key>
+          <Property Name="Id_Region" Type="int" Nullable="false" />
+          <Property Name="Nombre_Region" Type="nchar" MaxLength="10" />
+          <Property Name="Numero_Region" Type="nchar" MaxLength="10" />
+          <Property Name="Sector" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Servicio">
+          <Key>
+            <PropertyRef Name="Id_Servicio" />
+          </Key>
+          <Property Name="Id_Servicio" Type="int" Nullable="false" />
+          <Property Name="Id_Cliente" Type="int" />
+          <Property Name="Id_Profesional" Type="int" />
+          <Property Name="Id_Deuda" Type="int" />
+          <Property Name="Descripcion_Servicio" Type="varchar" MaxLength="50" />
+          <Property Name="Total_Servicio" Type="int" />
+          <Property Name="Fecha_Servicio" Type="date" />
+          <Property Name="Direccion" Type="varchar" MaxLength="50" />
+          <Property Name="Clasificacion" Type="varchar" MaxLength="50" />
+          <Property Name="Id_ComunaS" Type="int" />
+          <Property Name="Id_RegionS" Type="int" />
+        </EntityType>
+        <EntityType Name="Tipo_Profesional">
+          <Key>
+            <PropertyRef Name="Codigo_Profesional" />
+          </Key>
+          <Property Name="Codigo_Profesional" Type="int" Nullable="false" />
+          <Property Name="Id_Tipo" Type="int" Nullable="false" />
+          <Property Name="Nombre_Tipo" Type="varchar" MaxLength="50" />
+          <Property Name="Id_Area" Type="int" />
+        </EntityType>
+        <Association Name="FK_Cliente_Comuna">
+          <End Role="Comuna" Type="Self.Comuna" Multiplicity="0..1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comuna">
+              <PropertyRef Name="Id_Comuna" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="Id_Comuna" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cliente_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="Id_Region" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="Id_Region" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deuda_Servicio">
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="0..1" />
+          <End Role="Deuda" Type="Self.Deuda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicio">
+              <PropertyRef Name="Id_Servicio" />
+            </Principal>
+            <Dependent Role="Deuda">
+              <PropertyRef Name="Id_Servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profesional_Comuna">
+          <End Role="Comuna" Type="Self.Comuna" Multiplicity="0..1" />
+          <End Role="Profesional" Type="Self.Profesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comuna">
+              <PropertyRef Name="Id_Comuna" />
+            </Principal>
+            <Dependent Role="Profesional">
+              <PropertyRef Name="Id_ComunaP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profesional_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Profesional" Type="Self.Profesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="Id_Region" />
+            </Principal>
+            <Dependent Role="Profesional">
+              <PropertyRef Name="Id_RegionP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profesional_Tipo_Profesional">
+          <End Role="Tipo_Profesional" Type="Self.Tipo_Profesional" Multiplicity="0..1" />
+          <End Role="Profesional" Type="Self.Profesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Profesional">
+              <PropertyRef Name="Codigo_Profesional" />
+            </Principal>
+            <Dependent Role="Profesional">
+              <PropertyRef Name="Codigo_Profesional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id_Cliente" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="Id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Comuna">
+          <End Role="Comuna" Type="Self.Comuna" Multiplicity="0..1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comuna">
+              <PropertyRef Name="Id_Comuna" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="Id_ComunaS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Deuda">
+          <End Role="Deuda" Type="Self.Deuda" Multiplicity="0..1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deuda">
+              <PropertyRef Name="Id_Deuda" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="Id_Deuda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Profesional">
+          <End Role="Profesional" Type="Self.Profesional" Multiplicity="0..1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesional">
+              <PropertyRef Name="Id_Profesional" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="Id_Profesional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="Id_Region" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="Id_RegionS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tipo_Profesional_Areas">
+          <End Role="Areas" Type="Self.Areas" Multiplicity="0..1" />
+          <End Role="Tipo_Profesional" Type="Self.Tipo_Profesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Areas">
+              <PropertyRef Name="Id_Area" />
+            </Principal>
+            <Dependent Role="Tipo_Profesional">
+              <PropertyRef Name="Id_Area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HOMEADDVISOR_DBModelStoreContainer">
+          <EntitySet Name="Administrador" EntityType="Self.Administrador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Areas" EntityType="Self.Areas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comuna" EntityType="Self.Comuna" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deuda" EntityType="Self.Deuda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profesional" EntityType="Self.Profesional" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servicio" EntityType="Self.Servicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Profesional" EntityType="Self.Tipo_Profesional" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cliente_Comuna" Association="Self.FK_Cliente_Comuna">
+            <End Role="Comuna" EntitySet="Comuna" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Region" Association="Self.FK_Cliente_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deuda_Servicio" Association="Self.FK_Deuda_Servicio">
+            <End Role="Servicio" EntitySet="Servicio" />
+            <End Role="Deuda" EntitySet="Deuda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profesional_Comuna" Association="Self.FK_Profesional_Comuna">
+            <End Role="Comuna" EntitySet="Comuna" />
+            <End Role="Profesional" EntitySet="Profesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profesional_Region" Association="Self.FK_Profesional_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Profesional" EntitySet="Profesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profesional_Tipo_Profesional" Association="Self.FK_Profesional_Tipo_Profesional">
+            <End Role="Tipo_Profesional" EntitySet="Tipo_Profesional" />
+            <End Role="Profesional" EntitySet="Profesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Cliente" Association="Self.FK_Servicio_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Comuna" Association="Self.FK_Servicio_Comuna">
+            <End Role="Comuna" EntitySet="Comuna" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Deuda" Association="Self.FK_Servicio_Deuda">
+            <End Role="Deuda" EntitySet="Deuda" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Profesional" Association="Self.FK_Servicio_Profesional">
+            <End Role="Profesional" EntitySet="Profesional" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Region" Association="Self.FK_Servicio_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tipo_Profesional_Areas" Association="Self.FK_Tipo_Profesional_Areas">
+            <End Role="Areas" EntitySet="Areas" />
+            <End Role="Tipo_Profesional" EntitySet="Tipo_Profesional" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HOMEADDVISOR_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Administrador">
+          <Key>
+            <PropertyRef Name="Id_Administrador" />
+          </Key>
+          <Property Name="Id_Administrador" Type="Int32" Nullable="false" />
+          <Property Name="Rut_Adminsitrador" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="35" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Areas">
+          <Key>
+            <PropertyRef Name="Id_Area" />
+          </Key>
+          <Property Name="Id_Area" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_Area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tipo_Profesional" Relationship="Self.FK_Tipo_Profesional_Areas" FromRole="Areas" ToRole="Tipo_Profesional" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Id_Cliente" />
+          </Key>
+          <Property Name="Id_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="Rut_Cliente" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoPa_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoMa_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Domicilio_Cliente" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Bloqueado" Type="Boolean" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Comuna" Type="Int32" />
+          <Property Name="Id_Region" Type="Int32" />
+          <NavigationProperty Name="Comuna" Relationship="Self.FK_Cliente_Comuna" FromRole="Cliente" ToRole="Comuna" />
+          <NavigationProperty Name="Region" Relationship="Self.FK_Cliente_Region" FromRole="Cliente" ToRole="Region" />
+          <NavigationProperty Name="Servicio" Relationship="Self.FK_Servicio_Cliente" FromRole="Cliente" ToRole="Servicio" />
+        </EntityType>
+        <EntityType Name="Comuna">
+          <Key>
+            <PropertyRef Name="Id_Comuna" />
+          </Key>
+          <Property Name="Id_Comuna" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_Comuna" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CodigoPostal_Comuna" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Sector" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Gse" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Cliente_Comuna" FromRole="Comuna" ToRole="Cliente" />
+          <NavigationProperty Name="Profesional" Relationship="Self.FK_Profesional_Comuna" FromRole="Comuna" ToRole="Profesional" />
+          <NavigationProperty Name="Servicio" Relationship="Self.FK_Servicio_Comuna" FromRole="Comuna" ToRole="Servicio" />
+        </EntityType>
+        <EntityType Name="Deuda">
+          <Key>
+            <PropertyRef Name="Id_Deuda" />
+          </Key>
+          <Property Name="Id_Deuda" Type="Int32" Nullable="false" />
+          <Property Name="Id_Servicio" Type="Int32" />
+          <Property Name="Monto_Deuda" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Porcentaje_Deuda" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Servicio" Relationship="Self.FK_Deuda_Servicio" FromRole="Deuda" ToRole="Servicio" />
+          <NavigationProperty Name="Servicio1" Relationship="Self.FK_Servicio_Deuda" FromRole="Deuda" ToRole="Servicio" />
+        </EntityType>
+        <EntityType Name="Profesional">
+          <Key>
+            <PropertyRef Name="Id_Profesional" />
+          </Key>
+          <Property Name="Id_Profesional" Type="Int32" Nullable="false" />
+          <Property Name="Rut_Profesional" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre_Profesional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoPa_Profesional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoMa_Profesional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Domicilio_Profesional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Bloqueado" Type="Boolean" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Capacitacion" Type="Boolean" />
+          <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Disponibilidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Jornada" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Codigo_Profesional" Type="Int32" />
+          <Property Name="Id_RegionP" Type="Int32" />
+          <Property Name="Id_ComunaP" Type="Int32" />
+          <NavigationProperty Name="Comuna" Relationship="Self.FK_Profesional_Comuna" FromRole="Profesional" ToRole="Comuna" />
+          <NavigationProperty Name="Region" Relationship="Self.FK_Profesional_Region" FromRole="Profesional" ToRole="Region" />
+          <NavigationProperty Name="Tipo_Profesional" Relationship="Self.FK_Profesional_Tipo_Profesional" FromRole="Profesional" ToRole="Tipo_Profesional" />
+          <NavigationProperty Name="Servicio" Relationship="Self.FK_Servicio_Profesional" FromRole="Profesional" ToRole="Servicio" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Id_Region" />
+          </Key>
+          <Property Name="Id_Region" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_Region" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Numero_Region" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Sector" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Cliente_Region" FromRole="Region" ToRole="Cliente" />
+          <NavigationProperty Name="Profesional" Relationship="Self.FK_Profesional_Region" FromRole="Region" ToRole="Profesional" />
+          <NavigationProperty Name="Servicio" Relationship="Self.FK_Servicio_Region" FromRole="Region" ToRole="Servicio" />
+        </EntityType>
+        <EntityType Name="Servicio">
+          <Key>
+            <PropertyRef Name="Id_Servicio" />
+          </Key>
+          <Property Name="Id_Servicio" Type="Int32" Nullable="false" />
+          <Property Name="Id_Cliente" Type="Int32" />
+          <Property Name="Id_Profesional" Type="Int32" />
+          <Property Name="Id_Deuda" Type="Int32" />
+          <Property Name="Descripcion_Servicio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Total_Servicio" Type="Int32" />
+          <Property Name="Fecha_Servicio" Type="DateTime" Precision="0" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Clasificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_ComunaS" Type="Int32" />
+          <Property Name="Id_RegionS" Type="Int32" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Servicio_Cliente" FromRole="Servicio" ToRole="Cliente" />
+          <NavigationProperty Name="Comuna" Relationship="Self.FK_Servicio_Comuna" FromRole="Servicio" ToRole="Comuna" />
+          <NavigationProperty Name="Deuda" Relationship="Self.FK_Deuda_Servicio" FromRole="Servicio" ToRole="Deuda" />
+          <NavigationProperty Name="Deuda1" Relationship="Self.FK_Servicio_Deuda" FromRole="Servicio" ToRole="Deuda" />
+          <NavigationProperty Name="Profesional" Relationship="Self.FK_Servicio_Profesional" FromRole="Servicio" ToRole="Profesional" />
+          <NavigationProperty Name="Region" Relationship="Self.FK_Servicio_Region" FromRole="Servicio" ToRole="Region" />
+        </EntityType>
+        <EntityType Name="Tipo_Profesional">
+          <Key>
+            <PropertyRef Name="Codigo_Profesional" />
+          </Key>
+          <Property Name="Codigo_Profesional" Type="Int32" Nullable="false" />
+          <Property Name="Id_Tipo" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Area" Type="Int32" />
+          <NavigationProperty Name="Areas" Relationship="Self.FK_Tipo_Profesional_Areas" FromRole="Tipo_Profesional" ToRole="Areas" />
+          <NavigationProperty Name="Profesional" Relationship="Self.FK_Profesional_Tipo_Profesional" FromRole="Tipo_Profesional" ToRole="Profesional" />
+        </EntityType>
+        <Association Name="FK_Tipo_Profesional_Areas">
+          <End Role="Areas" Type="Self.Areas" Multiplicity="0..1" />
+          <End Role="Tipo_Profesional" Type="Self.Tipo_Profesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Areas">
+              <PropertyRef Name="Id_Area" />
+            </Principal>
+            <Dependent Role="Tipo_Profesional">
+              <PropertyRef Name="Id_Area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cliente_Comuna">
+          <End Role="Comuna" Type="Self.Comuna" Multiplicity="0..1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comuna">
+              <PropertyRef Name="Id_Comuna" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="Id_Comuna" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cliente_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="Id_Region" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="Id_Region" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id_Cliente" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="Id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profesional_Comuna">
+          <End Role="Comuna" Type="Self.Comuna" Multiplicity="0..1" />
+          <End Role="Profesional" Type="Self.Profesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comuna">
+              <PropertyRef Name="Id_Comuna" />
+            </Principal>
+            <Dependent Role="Profesional">
+              <PropertyRef Name="Id_ComunaP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Comuna">
+          <End Role="Comuna" Type="Self.Comuna" Multiplicity="0..1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comuna">
+              <PropertyRef Name="Id_Comuna" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="Id_ComunaS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deuda_Servicio">
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="0..1" />
+          <End Role="Deuda" Type="Self.Deuda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicio">
+              <PropertyRef Name="Id_Servicio" />
+            </Principal>
+            <Dependent Role="Deuda">
+              <PropertyRef Name="Id_Servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Deuda">
+          <End Role="Deuda" Type="Self.Deuda" Multiplicity="0..1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deuda">
+              <PropertyRef Name="Id_Deuda" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="Id_Deuda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profesional_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Profesional" Type="Self.Profesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="Id_Region" />
+            </Principal>
+            <Dependent Role="Profesional">
+              <PropertyRef Name="Id_RegionP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profesional_Tipo_Profesional">
+          <End Role="Tipo_Profesional" Type="Self.Tipo_Profesional" Multiplicity="0..1" />
+          <End Role="Profesional" Type="Self.Profesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Profesional">
+              <PropertyRef Name="Codigo_Profesional" />
+            </Principal>
+            <Dependent Role="Profesional">
+              <PropertyRef Name="Codigo_Profesional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Profesional">
+          <End Role="Profesional" Type="Self.Profesional" Multiplicity="0..1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesional">
+              <PropertyRef Name="Id_Profesional" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="Id_Profesional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="Id_Region" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="Id_RegionS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HOMEADDVISOR_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Administrador" EntityType="Self.Administrador" />
+          <EntitySet Name="Areas" EntityType="Self.Areas" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Comuna" EntityType="Self.Comuna" />
+          <EntitySet Name="Deuda" EntityType="Self.Deuda" />
+          <EntitySet Name="Profesional" EntityType="Self.Profesional" />
+          <EntitySet Name="Region" EntityType="Self.Region" />
+          <EntitySet Name="Servicio" EntityType="Self.Servicio" />
+          <EntitySet Name="Tipo_Profesional" EntityType="Self.Tipo_Profesional" />
+          <AssociationSet Name="FK_Tipo_Profesional_Areas" Association="Self.FK_Tipo_Profesional_Areas">
+            <End Role="Areas" EntitySet="Areas" />
+            <End Role="Tipo_Profesional" EntitySet="Tipo_Profesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Comuna" Association="Self.FK_Cliente_Comuna">
+            <End Role="Comuna" EntitySet="Comuna" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Region" Association="Self.FK_Cliente_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Cliente" Association="Self.FK_Servicio_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profesional_Comuna" Association="Self.FK_Profesional_Comuna">
+            <End Role="Comuna" EntitySet="Comuna" />
+            <End Role="Profesional" EntitySet="Profesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Comuna" Association="Self.FK_Servicio_Comuna">
+            <End Role="Comuna" EntitySet="Comuna" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deuda_Servicio" Association="Self.FK_Deuda_Servicio">
+            <End Role="Servicio" EntitySet="Servicio" />
+            <End Role="Deuda" EntitySet="Deuda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Deuda" Association="Self.FK_Servicio_Deuda">
+            <End Role="Deuda" EntitySet="Deuda" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profesional_Region" Association="Self.FK_Profesional_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Profesional" EntitySet="Profesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profesional_Tipo_Profesional" Association="Self.FK_Profesional_Tipo_Profesional">
+            <End Role="Tipo_Profesional" EntitySet="Tipo_Profesional" />
+            <End Role="Profesional" EntitySet="Profesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Profesional" Association="Self.FK_Servicio_Profesional">
+            <End Role="Profesional" EntitySet="Profesional" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Region" Association="Self.FK_Servicio_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HOMEADDVISOR_DBModelStoreContainer" CdmEntityContainer="HOMEADDVISOR_DBEntities">
+          <EntitySetMapping Name="Administrador">
+            <EntityTypeMapping TypeName="HOMEADDVISOR_DBModel.Administrador">
+              <MappingFragment StoreEntitySet="Administrador">
+                <ScalarProperty Name="Id_Administrador" ColumnName="Id_Administrador" />
+                <ScalarProperty Name="Rut_Adminsitrador" ColumnName="Rut_Adminsitrador" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Areas">
+            <EntityTypeMapping TypeName="HOMEADDVISOR_DBModel.Areas">
+              <MappingFragment StoreEntitySet="Areas">
+                <ScalarProperty Name="Id_Area" ColumnName="Id_Area" />
+                <ScalarProperty Name="Nombre_Area" ColumnName="Nombre_Area" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="HOMEADDVISOR_DBModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+                <ScalarProperty Name="Rut_Cliente" ColumnName="Rut_Cliente" />
+                <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+                <ScalarProperty Name="ApellidoPa_Cliente" ColumnName="ApellidoPa_Cliente" />
+                <ScalarProperty Name="ApellidoMa_Cliente" ColumnName="ApellidoMa_Cliente" />
+                <ScalarProperty Name="Domicilio_Cliente" ColumnName="Domicilio_Cliente" />
+                <ScalarProperty Name="Bloqueado" ColumnName="Bloqueado" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Id_Comuna" ColumnName="Id_Comuna" />
+                <ScalarProperty Name="Id_Region" ColumnName="Id_Region" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comuna">
+            <EntityTypeMapping TypeName="HOMEADDVISOR_DBModel.Comuna">
+              <MappingFragment StoreEntitySet="Comuna">
+                <ScalarProperty Name="Id_Comuna" ColumnName="Id_Comuna" />
+                <ScalarProperty Name="Nombre_Comuna" ColumnName="Nombre_Comuna" />
+                <ScalarProperty Name="CodigoPostal_Comuna" ColumnName="CodigoPostal_Comuna" />
+                <ScalarProperty Name="Sector" ColumnName="Sector" />
+                <ScalarProperty Name="Gse" ColumnName="Gse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deuda">
+            <EntityTypeMapping TypeName="HOMEADDVISOR_DBModel.Deuda">
+              <MappingFragment StoreEntitySet="Deuda">
+                <ScalarProperty Name="Id_Deuda" ColumnName="Id_Deuda" />
+                <ScalarProperty Name="Id_Servicio" ColumnName="Id_Servicio" />
+                <ScalarProperty Name="Monto_Deuda" ColumnName="Monto_Deuda" />
+                <ScalarProperty Name="Porcentaje_Deuda" ColumnName="Porcentaje_Deuda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profesional">
+            <EntityTypeMapping TypeName="HOMEADDVISOR_DBModel.Profesional">
+              <MappingFragment StoreEntitySet="Profesional">
+                <ScalarProperty Name="Id_Profesional" ColumnName="Id_Profesional" />
+                <ScalarProperty Name="Rut_Profesional" ColumnName="Rut_Profesional" />
+                <ScalarProperty Name="Nombre_Profesional" ColumnName="Nombre_Profesional" />
+                <ScalarProperty Name="ApellidoPa_Profesional" ColumnName="ApellidoPa_Profesional" />
+                <ScalarProperty Name="ApellidoMa_Profesional" ColumnName="ApellidoMa_Profesional" />
+                <ScalarProperty Name="Domicilio_Profesional" ColumnName="Domicilio_Profesional" />
+                <ScalarProperty Name="Bloqueado" ColumnName="Bloqueado" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Capacitacion" ColumnName="Capacitacion" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Disponibilidad" ColumnName="Disponibilidad" />
+                <ScalarProperty Name="Jornada" ColumnName="Jornada" />
+                <ScalarProperty Name="Codigo_Profesional" ColumnName="Codigo_Profesional" />
+                <ScalarProperty Name="Id_RegionP" ColumnName="Id_RegionP" />
+                <ScalarProperty Name="Id_ComunaP" ColumnName="Id_ComunaP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Region">
+            <EntityTypeMapping TypeName="HOMEADDVISOR_DBModel.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="Id_Region" ColumnName="Id_Region" />
+                <ScalarProperty Name="Nombre_Region" ColumnName="Nombre_Region" />
+                <ScalarProperty Name="Numero_Region" ColumnName="Numero_Region" />
+                <ScalarProperty Name="Sector" ColumnName="Sector" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Servicio">
+            <EntityTypeMapping TypeName="HOMEADDVISOR_DBModel.Servicio">
+              <MappingFragment StoreEntitySet="Servicio">
+                <ScalarProperty Name="Id_Servicio" ColumnName="Id_Servicio" />
+                <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+                <ScalarProperty Name="Id_Profesional" ColumnName="Id_Profesional" />
+                <ScalarProperty Name="Id_Deuda" ColumnName="Id_Deuda" />
+                <ScalarProperty Name="Descripcion_Servicio" ColumnName="Descripcion_Servicio" />
+                <ScalarProperty Name="Total_Servicio" ColumnName="Total_Servicio" />
+                <ScalarProperty Name="Fecha_Servicio" ColumnName="Fecha_Servicio" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Clasificacion" ColumnName="Clasificacion" />
+                <ScalarProperty Name="Id_ComunaS" ColumnName="Id_ComunaS" />
+                <ScalarProperty Name="Id_RegionS" ColumnName="Id_RegionS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Profesional">
+            <EntityTypeMapping TypeName="HOMEADDVISOR_DBModel.Tipo_Profesional">
+              <MappingFragment StoreEntitySet="Tipo_Profesional">
+                <ScalarProperty Name="Codigo_Profesional" ColumnName="Codigo_Profesional" />
+                <ScalarProperty Name="Id_Tipo" ColumnName="Id_Tipo" />
+                <ScalarProperty Name="Nombre_Tipo" ColumnName="Nombre_Tipo" />
+                <ScalarProperty Name="Id_Area" ColumnName="Id_Area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
