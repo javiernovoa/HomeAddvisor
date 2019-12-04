@@ -134,6 +134,7 @@
     <Compile Include="Controllers\ComunasController.cs" />
     <Compile Include="Controllers\DeudasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProfesionalsController.cs" />
     <Compile Include="Controllers\RegionsController.cs" />
     <Compile Include="Controllers\ServiciosController.cs" />
@@ -284,6 +285,7 @@
     <Content Include="Views\Tipo_Profesional\Details.cshtml" />
     <Content Include="Views\Tipo_Profesional\Edit.cshtml" />
     <Content Include="Views\Tipo_Profesional\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
