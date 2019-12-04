@@ -24,7 +24,7 @@ namespace HomeAddvisor.DB
     
         public int Id_Comuna { get; set; }
         public string Nombre_Comuna { get; set; }
-        public string CodigoPostal_Comuna { get; set; }
+        public Nullable<int> CodigoPostal_Comuna { get; set; }
         public string Sector { get; set; }
         public string Gse { get; set; }
     

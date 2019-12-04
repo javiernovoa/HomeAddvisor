@@ -9,15 +9,15 @@
           <Key>
             <PropertyRef Name="Id_Administrador" />
           </Key>
-          <Property Name="Id_Administrador" Type="int" Nullable="false" />
+          <Property Name="Id_Administrador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Rut_Adminsitrador" Type="varchar" MaxLength="12" />
-          <Property Name="Password" Type="nchar" MaxLength="35" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Areas">
           <Key>
             <PropertyRef Name="Id_Area" />
           </Key>
-          <Property Name="Id_Area" Type="int" Nullable="false" />
+          <Property Name="Id_Area" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre_Area" Type="varchar" MaxLength="50" />
           <Property Name="Descripcion" Type="varchar" MaxLength="50" />
         </EntityType>
@@ -25,7 +25,7 @@
           <Key>
             <PropertyRef Name="Id_Cliente" />
           </Key>
-          <Property Name="Id_Cliente" Type="int" Nullable="false" />
+          <Property Name="Id_Cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Rut_Cliente" Type="varchar" MaxLength="12" />
           <Property Name="Nombre_Cliente" Type="varchar" MaxLength="50" />
           <Property Name="ApellidoPa_Cliente" Type="varchar" MaxLength="50" />
@@ -42,26 +42,26 @@
           <Key>
             <PropertyRef Name="Id_Comuna" />
           </Key>
-          <Property Name="Id_Comuna" Type="int" Nullable="false" />
-          <Property Name="Nombre_Comuna" Type="nchar" MaxLength="10" />
-          <Property Name="CodigoPostal_Comuna" Type="nchar" MaxLength="10" />
-          <Property Name="Sector" Type="nchar" MaxLength="10" />
-          <Property Name="Gse" Type="nchar" MaxLength="10" />
+          <Property Name="Id_Comuna" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Comuna" Type="varchar" MaxLength="50" />
+          <Property Name="CodigoPostal_Comuna" Type="int" />
+          <Property Name="Sector" Type="varchar" MaxLength="50" />
+          <Property Name="Gse" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Deuda">
           <Key>
             <PropertyRef Name="Id_Deuda" />
           </Key>
-          <Property Name="Id_Deuda" Type="int" Nullable="false" />
+          <Property Name="Id_Deuda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_Servicio" Type="int" />
-          <Property Name="Monto_Deuda" Type="nchar" MaxLength="10" />
-          <Property Name="Porcentaje_Deuda" Type="nchar" MaxLength="10" />
+          <Property Name="Monto_Deuda" Type="varchar" MaxLength="50" />
+          <Property Name="Porcentaje_Deuda" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Profesional">
           <Key>
             <PropertyRef Name="Id_Profesional" />
           </Key>
-          <Property Name="Id_Profesional" Type="int" Nullable="false" />
+          <Property Name="Id_Profesional" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Rut_Profesional" Type="varchar" MaxLength="12" />
           <Property Name="Nombre_Profesional" Type="varchar" MaxLength="50" />
           <Property Name="ApellidoPa_Profesional" Type="varchar" MaxLength="50" />
@@ -83,16 +83,16 @@
           <Key>
             <PropertyRef Name="Id_Region" />
           </Key>
-          <Property Name="Id_Region" Type="int" Nullable="false" />
-          <Property Name="Nombre_Region" Type="nchar" MaxLength="10" />
-          <Property Name="Numero_Region" Type="nchar" MaxLength="10" />
-          <Property Name="Sector" Type="nchar" MaxLength="10" />
+          <Property Name="Id_Region" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Region" Type="varchar" MaxLength="50" />
+          <Property Name="Numero_Region" Type="varchar" MaxLength="50" />
+          <Property Name="Sector" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Servicio">
           <Key>
             <PropertyRef Name="Id_Servicio" />
           </Key>
-          <Property Name="Id_Servicio" Type="int" Nullable="false" />
+          <Property Name="Id_Servicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_Cliente" Type="int" />
           <Property Name="Id_Profesional" Type="int" />
           <Property Name="Id_Deuda" Type="int" />
@@ -108,7 +108,7 @@
           <Key>
             <PropertyRef Name="Codigo_Profesional" />
           </Key>
-          <Property Name="Codigo_Profesional" Type="int" Nullable="false" />
+          <Property Name="Codigo_Profesional" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_Tipo" Type="int" Nullable="false" />
           <Property Name="Nombre_Tipo" Type="varchar" MaxLength="50" />
           <Property Name="Id_Area" Type="int" />
@@ -325,15 +325,15 @@
           <Key>
             <PropertyRef Name="Id_Administrador" />
           </Key>
-          <Property Name="Id_Administrador" Type="Int32" Nullable="false" />
+          <Property Name="Id_Administrador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Rut_Adminsitrador" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="35" FixedLength="true" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Areas">
           <Key>
             <PropertyRef Name="Id_Area" />
           </Key>
-          <Property Name="Id_Area" Type="Int32" Nullable="false" />
+          <Property Name="Id_Area" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre_Area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Tipo_Profesional" Relationship="Self.FK_Tipo_Profesional_Areas" FromRole="Areas" ToRole="Tipo_Profesional" />
@@ -342,7 +342,7 @@
           <Key>
             <PropertyRef Name="Id_Cliente" />
           </Key>
-          <Property Name="Id_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="Id_Cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Rut_Cliente" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="Nombre_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ApellidoPa_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -362,11 +362,11 @@
           <Key>
             <PropertyRef Name="Id_Comuna" />
           </Key>
-          <Property Name="Id_Comuna" Type="Int32" Nullable="false" />
-          <Property Name="Nombre_Comuna" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="CodigoPostal_Comuna" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Sector" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Gse" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Id_Comuna" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Comuna" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoPostal_Comuna" Type="Int32" />
+          <Property Name="Sector" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Cliente" Relationship="Self.FK_Cliente_Comuna" FromRole="Comuna" ToRole="Cliente" />
           <NavigationProperty Name="Profesional" Relationship="Self.FK_Profesional_Comuna" FromRole="Comuna" ToRole="Profesional" />
           <NavigationProperty Name="Servicio" Relationship="Self.FK_Servicio_Comuna" FromRole="Comuna" ToRole="Servicio" />
@@ -375,10 +375,10 @@
           <Key>
             <PropertyRef Name="Id_Deuda" />
           </Key>
-          <Property Name="Id_Deuda" Type="Int32" Nullable="false" />
+          <Property Name="Id_Deuda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Id_Servicio" Type="Int32" />
-          <Property Name="Monto_Deuda" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Porcentaje_Deuda" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Monto_Deuda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Porcentaje_Deuda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Servicio" Relationship="Self.FK_Deuda_Servicio" FromRole="Deuda" ToRole="Servicio" />
           <NavigationProperty Name="Servicio1" Relationship="Self.FK_Servicio_Deuda" FromRole="Deuda" ToRole="Servicio" />
         </EntityType>
@@ -386,7 +386,7 @@
           <Key>
             <PropertyRef Name="Id_Profesional" />
           </Key>
-          <Property Name="Id_Profesional" Type="Int32" Nullable="false" />
+          <Property Name="Id_Profesional" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Rut_Profesional" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="Nombre_Profesional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ApellidoPa_Profesional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -412,10 +412,10 @@
           <Key>
             <PropertyRef Name="Id_Region" />
           </Key>
-          <Property Name="Id_Region" Type="Int32" Nullable="false" />
-          <Property Name="Nombre_Region" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Numero_Region" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Sector" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Id_Region" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Region" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Numero_Region" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sector" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Cliente" Relationship="Self.FK_Cliente_Region" FromRole="Region" ToRole="Cliente" />
           <NavigationProperty Name="Profesional" Relationship="Self.FK_Profesional_Region" FromRole="Region" ToRole="Profesional" />
           <NavigationProperty Name="Servicio" Relationship="Self.FK_Servicio_Region" FromRole="Region" ToRole="Servicio" />
@@ -424,7 +424,7 @@
           <Key>
             <PropertyRef Name="Id_Servicio" />
           </Key>
-          <Property Name="Id_Servicio" Type="Int32" Nullable="false" />
+          <Property Name="Id_Servicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Id_Cliente" Type="Int32" />
           <Property Name="Id_Profesional" Type="Int32" />
           <Property Name="Id_Deuda" Type="Int32" />
@@ -446,7 +446,7 @@
           <Key>
             <PropertyRef Name="Codigo_Profesional" />
           </Key>
-          <Property Name="Codigo_Profesional" Type="Int32" Nullable="false" />
+          <Property Name="Codigo_Profesional" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Id_Tipo" Type="Int32" Nullable="false" />
           <Property Name="Nombre_Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Id_Area" Type="Int32" />
@@ -597,7 +597,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="HOMEADDVISOR_DBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="HOMEADDVISOR_DBEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Administrador" EntityType="Self.Administrador" />
           <EntitySet Name="Areas" EntityType="Self.Areas" />
           <EntitySet Name="Cliente" EntityType="Self.Cliente" />
@@ -661,7 +661,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="HOMEADDVISOR_DBModelStoreContainer" CdmEntityContainer="HOMEADDVISOR_DBEntities">
+        <EntityContainerMapping StorageEntityContainer="HOMEADDVISOR_DBModelStoreContainer" CdmEntityContainer="HOMEADDVISOR_DBEntities1">
           <EntitySetMapping Name="Administrador">
             <EntityTypeMapping TypeName="HOMEADDVISOR_DBModel.Administrador">
               <MappingFragment StoreEntitySet="Administrador">

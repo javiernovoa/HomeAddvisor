@@ -13,10 +13,10 @@ namespace HomeAddvisor.DB
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HOMEADDVISOR_DBEntities : DbContext
+    public partial class HOMEADDVISOR_DBEntities1 : DbContext
     {
-        public HOMEADDVISOR_DBEntities()
-            : base("name=HOMEADDVISOR_DBEntities")
+        public HOMEADDVISOR_DBEntities1()
+            : base("name=HOMEADDVISOR_DBEntities1")
         {
         }
     

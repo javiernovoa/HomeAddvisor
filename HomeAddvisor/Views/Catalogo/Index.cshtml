@@ -1,0 +1,25 @@
+﻿@model IEnumerable<HomeAddvisor.DB.Profesional>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div id="catalogo">
+	@foreach (var pro in Model)
+	{
+		<article>
+			<header>
+				@pro.Nombre_Profesional
+			</header>
+			<div>
+				<img />
+			</div>
+			<footer>
+				<span> </span>
+				<button id="@pro.Id_Profesional">Consultar</button>
+			</footer>
+		</article>
+	}
+</div>

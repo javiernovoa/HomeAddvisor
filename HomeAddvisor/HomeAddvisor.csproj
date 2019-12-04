@@ -128,16 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AdministradorsController.cs" />
-    <Compile Include="Controllers\AreasController.cs" />
-    <Compile Include="Controllers\ClientesController.cs" />
-    <Compile Include="Controllers\ComunasController.cs" />
-    <Compile Include="Controllers\DeudasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProfesionalsController.cs" />
-    <Compile Include="Controllers\RegionsController.cs" />
-    <Compile Include="Controllers\ServiciosController.cs" />
-    <Compile Include="Controllers\Tipo_ProfesionalController.cs" />
     <Compile Include="DB\Administrador.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -192,8 +183,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="DB\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
     <Content Include="DB\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -232,57 +223,11 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Administradors\Create.cshtml" />
-    <Content Include="Views\Administradors\Delete.cshtml" />
-    <Content Include="Views\Administradors\Details.cshtml" />
-    <Content Include="Views\Administradors\Edit.cshtml" />
-    <Content Include="Views\Administradors\Index.cshtml" />
-    <Content Include="Views\Areas\Create.cshtml" />
-    <Content Include="Views\Areas\Delete.cshtml" />
-    <Content Include="Views\Areas\Details.cshtml" />
-    <Content Include="Views\Areas\Edit.cshtml" />
-    <Content Include="Views\Areas\Index.cshtml" />
-    <Content Include="Views\Clientes\Create.cshtml" />
-    <Content Include="Views\Clientes\Delete.cshtml" />
-    <Content Include="Views\Clientes\Details.cshtml" />
-    <Content Include="Views\Clientes\Edit.cshtml" />
-    <Content Include="Views\Clientes\Index.cshtml" />
-    <Content Include="Views\Comunas\Create.cshtml" />
-    <Content Include="Views\Comunas\Delete.cshtml" />
-    <Content Include="Views\Comunas\Details.cshtml" />
-    <Content Include="Views\Comunas\Edit.cshtml" />
-    <Content Include="Views\Comunas\Index.cshtml" />
-    <Content Include="Views\Deudas\Create.cshtml" />
-    <Content Include="Views\Deudas\Delete.cshtml" />
-    <Content Include="Views\Deudas\Details.cshtml" />
-    <Content Include="Views\Deudas\Edit.cshtml" />
-    <Content Include="Views\Deudas\Index.cshtml" />
-    <Content Include="Views\Profesionals\Create.cshtml" />
-    <Content Include="Views\Profesionals\Delete.cshtml" />
-    <Content Include="Views\Profesionals\Details.cshtml" />
-    <Content Include="Views\Profesionals\Edit.cshtml" />
-    <Content Include="Views\Profesionals\Index.cshtml" />
-    <Content Include="Views\Regions\Create.cshtml" />
-    <Content Include="Views\Regions\Delete.cshtml" />
-    <Content Include="Views\Regions\Details.cshtml" />
-    <Content Include="Views\Regions\Edit.cshtml" />
-    <Content Include="Views\Regions\Index.cshtml" />
-    <Content Include="Views\Servicios\Create.cshtml" />
-    <Content Include="Views\Servicios\Delete.cshtml" />
-    <Content Include="Views\Servicios\Details.cshtml" />
-    <Content Include="Views\Servicios\Edit.cshtml" />
-    <Content Include="Views\Servicios\Index.cshtml" />
-    <Content Include="Views\Tipo_Profesional\Create.cshtml" />
-    <Content Include="Views\Tipo_Profesional\Delete.cshtml" />
-    <Content Include="Views\Tipo_Profesional\Details.cshtml" />
-    <Content Include="Views\Tipo_Profesional\Edit.cshtml" />
-    <Content Include="Views\Tipo_Profesional\Index.cshtml" />
     <Content Include="Views\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
