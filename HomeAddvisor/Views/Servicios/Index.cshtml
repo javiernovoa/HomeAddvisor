@@ -1,0 +1,87 @@
+﻿@model IEnumerable<HomeAddvisor.DB.Servicio>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion_Servicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total_Servicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha_Servicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Clasificacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente.Rut_Cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comuna.Nombre_Comuna)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Deuda1.Monto_Deuda)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Profesional.Rut_Profesional)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Region.Nombre_Region)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion_Servicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total_Servicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha_Servicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clasificacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.Rut_Cliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comuna.Nombre_Comuna)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Deuda1.Monto_Deuda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Profesional.Rut_Profesional)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Region.Nombre_Region)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id_Servicio }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id_Servicio }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id_Servicio })
+        </td>
+    </tr>
+}
+
+</table>
