@@ -25,14 +25,14 @@ namespace HomeAddvisor.DB
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Administrador> Administrador { get; set; }
+        public virtual DbSet<Deuda> Deuda { get; set; }
         public virtual DbSet<Areas> Areas { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Comuna> Comuna { get; set; }
-        public virtual DbSet<Deuda> Deuda { get; set; }
         public virtual DbSet<Profesional> Profesional { get; set; }
+        public virtual DbSet<Tipo_Profesional> Tipo_Profesional { get; set; }
+        public virtual DbSet<Administrador> Administrador { get; set; }
         public virtual DbSet<Region> Region { get; set; }
         public virtual DbSet<Servicio> Servicio { get; set; }
-        public virtual DbSet<Tipo_Profesional> Tipo_Profesional { get; set; }
     }
 }

@@ -19,9 +19,9 @@ namespace HomeAddvisor.DB
         {
             this.Profesional = new HashSet<Profesional>();
         }
-    
+       
         public int Codigo_Profesional { get; set; }
-        public int Id_Tipo { get; set; }
+        public Nullable<int> Id_Tipo { get; set; }
         public string Nombre_Tipo { get; set; }
         public Nullable<int> Id_Area { get; set; }
     

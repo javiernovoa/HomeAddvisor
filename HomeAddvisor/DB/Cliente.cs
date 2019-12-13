@@ -11,17 +11,22 @@ namespace HomeAddvisor.DB
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Cliente
     {
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Cliente()
         {
             this.Servicio = new HashSet<Servicio>();
         }
-    
+
         public int Id_Cliente { get; set; }
+        [MinLength(12, ErrorMessage = "{0} el largo debe ser de 12")]
+        [Display(Name = "Ingrese su rut de Cliente :)")]
         public string Rut_Cliente { get; set; }
+
         public string Nombre_Cliente { get; set; }
         public string ApellidoPa_Cliente { get; set; }
         public string ApellidoMa_Cliente { get; set; }

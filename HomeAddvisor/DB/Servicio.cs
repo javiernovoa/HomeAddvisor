@@ -31,6 +31,7 @@ namespace HomeAddvisor.DB
         public string Clasificacion { get; set; }
         public Nullable<int> Id_ComunaS { get; set; }
         public Nullable<int> Id_RegionS { get; set; }
+        public Nullable<bool> Estado { get; set; }
     
         public virtual Cliente Cliente { get; set; }
         public virtual Comuna Comuna { get; set; }

@@ -39,8 +39,8 @@ namespace HomeAddvisor.DB
         public Nullable<int> Id_ComunaP { get; set; }
     
         public virtual Comuna Comuna { get; set; }
-        public virtual Region Region { get; set; }
         public virtual Tipo_Profesional Tipo_Profesional { get; set; }
+        public virtual Region Region { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Servicio> Servicio { get; set; }
     }

@@ -1,99 +1,45 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Bootstrap Example</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-	<style>
-		/* Remove the navbar's default rounded borders and increase the bottom margin */
-		.navbar {
-			margin-bottom: 50px;
-			border-radius: 0;
-		}
+﻿@model HomeAddvisor.DB.Profesional
+@{
+	ViewBag.Title = "Home Page";
+	var ListaProfesional = ViewBag.ListaProfesional;
+}
 
-		/* Remove the jumbotron's default bottom margin */
-		.jumbotron {
-			margin-bottom: 0;
-		}
-
-		/* Add a gray background color and some padding to the footer */
-		footer {
-			background-color: #f2f2f2;
-			padding: 25px;
-		}
-	</style>
-</head>
-<body>
-
-	<div class="jumbotron">
-		<div class="container text-center">
-			<h1>Home Addvisor</h1>
-			<p>Mejorando la calidad de vida de todos</p>
-		</div>
+<div class="jumbotron">
+	<div class="container text-center">
+		<h1>HomeAddvisor</h1>
+		<p>Siempre intentando mejorar tu calidad de vida</p>
 	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-4">
-				<div class="panel panel-primary">
-					<div class="panel-heading">BLACK FRIDAY DEAL</div>
-					<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-					<div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="panel panel-danger">
-					<div class="panel-heading">BLACK FRIDAY DEAL</div>
-					<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-					<div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="panel panel-success">
-					<div class="panel-heading">BLACK FRIDAY DEAL</div>
-					<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-					<div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-				</div>
-			</div>
-		</div>
-	</div><br>
+</div>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-4">
-				<div class="panel panel-primary">
-					<div class="panel-heading">BLACK FRIDAY DEAL</div>
-					<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-					<div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="panel panel-primary">
-					<div class="panel-heading">BLACK FRIDAY DEAL</div>
-					<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-					<div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="panel panel-primary">
-					<div class="panel-heading">BLACK FRIDAY DEAL</div>
-					<div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-					<div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-				</div>
-			</div>
-		</div>
-	</div><br><br>
+<div class="container">
+	<div><p class="display-4">Aqui puedes ver todos los profesionales disponibles actualmente ligados a HomeAddvisor</p></div>
+	<div class="row">
+		@foreach (var p in ListaProfesional)
+		{
 
-	<footer class="container-fluid text-center">
-		<p>Online Store Copyright</p>
-		<form class="form-inline">
-			Get deals:
-			<input type="email" class="form-control" size="50" placeholder="Email Address">
-			<button type="button" class="btn btn-danger">Sign Up</button>
-		</form>
-	</footer>
+			<div class="col-lg-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						@p.Nombre_Profesional @p.ApellidoPa_Profesional
 
-</body>
-</html>
+					</div>
+					<div class="panel-body">
+						<img class="img-thumbnail" src="@p.Imagen" style="width:100%" alt="Image" />
+						<p>@p.Codigo_Profesional</p>
+					</div>
+					<div class="panel-body">
+						<div class="col-md-offset-2 col-md-10">
+							@Html.ActionLink("Solicitar el Servicio", "CreateS", "Servicios", new { ListaProfesional } )
+							<input type="submit" value="Solicitar Servicio" class="btn btn-default" />
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+</div>
+
+<div>
+	@Html.ActionLink("Ingrese al menu de administrador", "Index", "Menu")
+</div>
+

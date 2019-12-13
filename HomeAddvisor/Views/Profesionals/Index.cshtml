@@ -54,10 +54,10 @@
             @Html.DisplayNameFor(model => model.Comuna.Nombre_Comuna)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Region.Nombre_Region)
+            @Html.DisplayNameFor(model => model.Tipo_Profesional.Nombre_Tipo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Tipo_Profesional.Nombre_Tipo)
+            @Html.DisplayNameFor(model => model.Region.Nombre_Region)
         </th>
         <th></th>
     </tr>
@@ -94,9 +94,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Capacitacion)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Imagen)
-        </td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Imagen)
+		</td>
         <td>
             @Html.DisplayFor(modelItem => item.Disponibilidad)
         </td>
@@ -107,10 +107,10 @@
             @Html.DisplayFor(modelItem => item.Comuna.Nombre_Comuna)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Region.Nombre_Region)
+            @Html.DisplayFor(modelItem => item.Tipo_Profesional.Nombre_Tipo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Tipo_Profesional.Nombre_Tipo)
+            @Html.DisplayFor(modelItem => item.Region.Nombre_Region)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id_Profesional }) |

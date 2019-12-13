@@ -136,6 +136,38 @@ namespace HomeAddvisor.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult CreateS()
+        {
+            ViewBag.Id_Cliente = new SelectList(db.Cliente, "Id_Cliente", "Rut_Cliente");
+            ViewBag.Id_ComunaS = new SelectList(db.Comuna, "Id_Comuna", "Nombre_Comuna");
+            ViewBag.Id_Deuda = new SelectList(db.Deuda, "Id_Deuda", "Monto_Deuda");
+            ViewBag.Id_Profesional = new SelectList(db.Profesional, "Id_Profesional", "Rut_Profesional");
+            ViewBag.Id_RegionS = new SelectList(db.Region, "Id_Region", "Nombre_Region");
+            return View();
+        }
+
+        // POST: Servicios/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateS([Bind(Include = "Id_Servicio,Id_Cliente,Id_Profesional,Id_Deuda,Descripcion_Servicio,Total_Servicio,Fecha_Servicio,Direccion,Clasificacion,Id_ComunaS,Id_RegionS")] Servicio servicio)
+        {
+
+            if (ModelState.IsValid)
+            {
+                db.Servicio.Add(servicio);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.Id_Cliente = new SelectList(db.Cliente, "Id_Cliente", "Rut_Cliente", servicio.Id_Cliente);
+            ViewBag.Id_ComunaS = new SelectList(db.Comuna, "Id_Comuna", "Nombre_Comuna", servicio.Id_ComunaS);
+            ViewBag.Id_Deuda = new SelectList(db.Deuda, "Id_Deuda", "Monto_Deuda", servicio.Id_Deuda);
+            ViewBag.Id_Profesional = new SelectList(db.Profesional, "Id_Profesional", "Rut_Profesional", servicio.Id_Profesional);
+            ViewBag.Id_RegionS = new SelectList(db.Region, "Id_Region", "Nombre_Region", servicio.Id_RegionS);
+            return View(servicio);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
